@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proposal</title>
+<style>
+body{
+background:pink;
+text-align:center;
+font-family:Arial;
+}
+button{
+padding:15px 30px;
+margin:15px;
+border-radius:25px;
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="title"></h1>
+
+<img src="gifs/teddy1.gif" width="250">
+
+<h2>Will you be my Valentine?</h2>
+
+<button onclick="yes()">YES ❤️</button>
+<button onclick="alert('Try again 😜')">NO 💔</button>
+
+<script>
+
+let p=new URLSearchParams(window.location.search);
+
+let receiver=p.get("receiver");
+let nick=p.get("nick");
+
+document.getElementById("title").innerText=`Hey ${nick || receiver} ❤️`;
+
+function yes(){
+window.location.href=
+`success.html${window.location.search}`;
+}
+</script>
+
+</body>
+</html>
