@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+background:white;
+text-align:center;
+}
+button{
+padding:15px 30px;
+background:red;
+color:white;
+border:none;
+border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>YAYYYY!!! 💖</h1>
+
+<img src="gifs/teddy2.gif" width="250">
+
+<h2>I have gifts for you!</h2>
+
+<button onclick="gift1()">Gift 1 💌</button>
+<button onclick="gift2()">Gift 2 🎶</button>
+
+<script>
+function gift1(){
+window.location.href=`gift1.html${window.location.search}`;
+}
+function gift2(){
+window.location.href=`gift2.html${window.location.search}`;
+}
+</script>
+
+</body>
+</html>
