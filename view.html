@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Valentine Message</title>
+</head>
+
+<body>
+
+<h1 id="title"></h1>
+<p id="content"></p>
+<h3 id="from"></h3>
+
+<script>
+
+const p = new URLSearchParams(window.location.search);
+
+document.getElementById("title").innerText =
+"Dear " + p.get("receiver") + " ❤️";
+
+document.getElementById("content").innerText =
+p.get("message");
+
+document.getElementById("from").innerText =
+"From " + p.get("sender");
+
+</script>
+
+</body>
+</html>
