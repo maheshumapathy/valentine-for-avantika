@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Valentine Proposal</title>
+<title>Create Valentine Link</title>
 
 <style>
-body {
-background-color: #ffc0cb;
-text-align: center;
+body{
 font-family: Arial;
+text-align:center;
+background:pink;
 }
 
-button {
-padding: 15px 40px;
-font-size: 20px;
-margin: 15px;
-border-radius: 30px;
-border: none;
-cursor: pointer;
+input, textarea{
+width:80%;
+padding:10px;
+margin:8px;
+border-radius:10px;
 }
 
-.yes {
-background-color: #ff4d6d;
-color: white;
-}
-
-.no {
-background-color: white;
+button{
+padding:15px 30px;
+background:red;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Avantika ❤️</h1>
+<h1>Create Valentine Link ❤️</h1>
 
-<img src="gifs/teddy1.gif" width="250">
+<input id="receiver" placeholder="Receiver Name">
+<input id="nickname" placeholder="Receiver Nickname">
+<input id="sender" placeholder="Your Name">
 
-<h2>Will you be my Valentine?</h2>
+<textarea id="p1" placeholder="Paragraph 1"></textarea>
+<textarea id="p2" placeholder="Paragraph 2"></textarea>
+<textarea id="p3" placeholder="Paragraph 3"></textarea>
 
-<button class="yes" onclick="location.href='yes.html'">YES ❤️</button>
+<button onclick="generate()">Generate Link</button>
 
-<button class="no" onclick="noClick()">NO 💔</button>
+<p id="output"></p>
 
 <script>
-function noClick() {
-alert("Wrong answer 😤 Try again!");
+function generate(){
+
+let r=document.getElementById("receiver").value;
+let n=document.getElementById("nickname").value;
+let s=document.getElementById("sender").value;
+let p1=encodeURIComponent(document.getElementById("p1").value);
+let p2=encodeURIComponent(document.getElementById("p2").value);
+let p3=encodeURIComponent(document.getElementById("p3").value);
+
+let link=`proposal.html?receiver=${r}&nick=${n}&sender=${s}&p1=${p1}&p2=${p2}&p3=${p3}`;
+
+document.getElementById("output").innerHTML =
+`Share this link:<br><a href="${link}">${link}</a>`;
 }
 </script>
 
