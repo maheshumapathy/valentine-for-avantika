@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+background:red;
+color:white;
+text-align:center;
+}
+.box{
+background:white;
+color:black;
+width:70%;
+margin:auto;
+padding:20px;
+border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>My Letter ❤️</h1>
+
+<div class="box">
+<p id="p1"></p>
+<p id="p2"></p>
+<p id="p3"></p>
+</div>
+
+<script>
+let p=new URLSearchParams(window.location.search);
+
+document.getElementById("p1").innerText=p.get("p1");
+document.getElementById("p2").innerText=p.get("p2");
+document.getElementById("p3").innerText=p.get("p3");
+</script>
+
+</body>
+</html>
