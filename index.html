@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Create Valentine Page</title>
+<title>Valentine Proposal</title>
+
+<style>
+body {
+background-color: #ffc0cb;
+text-align: center;
+font-family: Arial;
+}
+
+button {
+padding: 15px 40px;
+font-size: 20px;
+margin: 15px;
+border-radius: 30px;
+border: none;
+cursor: pointer;
+}
+
+.yes {
+background-color: #ff4d6d;
+color: white;
+}
+
+.no {
+background-color: white;
+}
+</style>
 </head>
 
 <body>
 
-<h2>Create Your Valentine Message</h2>
+<h1>Avantika ❤️</h1>
 
-<input id="receiver" placeholder="Receiver Name"><br><br>
-<input id="sender" placeholder="Your Name"><br><br>
+<img src="gifs/teddy1.gif" width="250">
 
-<textarea id="message" placeholder="Write message"></textarea><br><br>
+<h2>Will you be my Valentine?</h2>
 
-<button onclick="generateLink()">Generate Link</button>
+<button class="yes" onclick="location.href='yes.html'">YES ❤️</button>
 
-<p id="result"></p>
+<button class="no" onclick="noClick()">NO 💔</button>
 
 <script>
-
-function generateLink(){
-
-let r = encodeURIComponent(
-document.getElementById("receiver").value);
-
-let s = encodeURIComponent(
-document.getElementById("sender").value);
-
-let m = encodeURIComponent(
-document.getElementById("message").value);
-
-let url =
-`view.html?receiver=${r}&sender=${s}&message=${m}`;
-
-document.getElementById("result").innerHTML =
-`<a href="${url}" target="_blank">${url}</a>`;
+function noClick() {
+alert("Wrong answer 😤 Try again!");
 }
-
 </script>
 
 </body>
