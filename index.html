@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Valentine Message</title>
+<title>Create Valentine Page</title>
 </head>
 
 <body>
 
-<h1 id="title"></h1>
-<p id="content"></p>
-<h3 id="from"></h3>
+<h2>Create Your Valentine Message</h2>
+
+<input id="receiver" placeholder="Receiver Name"><br><br>
+<input id="sender" placeholder="Your Name"><br><br>
+
+<textarea id="message" placeholder="Write message"></textarea><br><br>
+
+<button onclick="generateLink()">Generate Link</button>
+
+<p id="result"></p>
 
 <script>
 
-const p = new URLSearchParams(window.location.search);
+function generateLink(){
 
-document.getElementById("title").innerText =
-"Dear " + p.get("receiver") + " ❤️";
+let r = encodeURIComponent(
+document.getElementById("receiver").value);
 
-document.getElementById("content").innerText =
-p.get("message");
+let s = encodeURIComponent(
+document.getElementById("sender").value);
 
-document.getElementById("from").innerText =
-"From " + p.get("sender");
+let m = encodeURIComponent(
+document.getElementById("message").value);
+
+let url =
+`view.html?receiver=${r}&sender=${s}&message=${m}`;
+
+document.getElementById("result").innerHTML =
+`<a href="${url}" target="_blank">${url}</a>`;
+}
 
 </script>
 
