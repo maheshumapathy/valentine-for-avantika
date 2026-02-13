@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Letter</title>
+<meta charset="UTF-8">
+<title>Valentine Gifts</title>
 
 <style>
 body{
-background:#ff4d6d;
-font-family: Georgia;
-color:#333;
+background:white;
 text-align:center;
-padding:30px;
-}
-
-.box{
-background:#fff8f0;
-padding:30px;
-border-radius:20px;
-max-width:700px;
-margin:auto;
-white-space:pre-wrap;
-line-height:1.7;
+font-family:Arial;
+padding-top:120px;
 }
 
 button{
+padding:15px 35px;
 margin:15px;
-padding:12px 25px;
+font-size:18px;
 border:none;
-border-radius:10px;
+border-radius:20px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
@@ -36,37 +27,19 @@ cursor:pointer;
 
 <body>
 
-<h1>My Letter ❤️</h1>
+<h1>I Have Valentine Gifts For You 🎁</h1>
 
-<div class="box">
-
-<p id="p1"></p>
-<p id="p2"></p>
-<p id="p3"></p>
-
-<h3 id="sign"></h3>
-
-</div>
-
-<button onclick="next()">Open Gift 🎁</button>
+<button onclick="gift1()">Gift 1 💌</button>
+<button onclick="gift2()">Gift 2 🎵</button>
 
 <script>
-
-const params = new URLSearchParams(location.search);
-const data = JSON.parse(decodeURIComponent(params.get("data")));
-
-p1.innerText=data.p1;
-p2.innerText=data.p2;
-p3.innerText=data.p3;
-
-sign.innerText="Forever Yours,\n"+data.sender;
-
-localStorage.setItem("valentineData", JSON.stringify(data));
-
-function next(){
-location.href="gift1.html";
+function gift1(){
+window.location.href="gift1.html"+window.location.search;
 }
 
+function gift2(){
+window.location.href="gift2.html"+window.location.search;
+}
 </script>
 
 </body>
