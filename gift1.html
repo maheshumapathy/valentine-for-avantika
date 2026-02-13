@@ -1,68 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Gift 1 💌</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
-body {
-    background: #ff2b2b;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
+
+body{
+background:red;
+text-align:center;
+padding:25px;
 }
 
-.card {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    max-width: 700px;
-    margin: auto;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+max-width:600px;
+margin:auto;
 }
 
-h1 {
-    color: white;
+.letter{
+font-family:'Playfair Display';
+font-size:18px;
+margin:15px 0;
 }
 
-.nextBtn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background: pink;
-    cursor: pointer;
+.signature{
+font-family:'Dancing Script';
+font-size:28px;
+margin-top:20px;
+}
+
+button{
+margin:10px;
+padding:10px 25px;
+border:none;
+border-radius:10px;
+background:pink;
+cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h1>My Letter ❤️</h1>
+<h2 style="color:white;">My Letter ❤️</h2>
 
 <div class="card">
-    <p id="para1"></p>
-    <p id="para2"></p>
-    <p id="para3"></p>
-
-    <button class="nextBtn" onclick="openGift2()">Open Gift 2 🎵</button>
+<p class="letter" id="p1"></p>
+<p class="letter" id="p2"></p>
+<p class="letter" id="p3"></p>
+<p class="signature" id="sign"></p>
 </div>
+
+<button onclick="gift2()">Open Gift 2 🎵</button>
+<button onclick="back()">Back</button>
 
 <script>
 
-function getData(name) {
-    const params = new URLSearchParams(window.location.search);
-    return decodeURIComponent(params.get(name) || "");
+const params=new URLSearchParams(window.location.search);
+
+["p1","p2","p3"].forEach(id=>{
+document.getElementById(id).innerText=params.get(id);
+});
+
+document.getElementById("sign").innerText=
+"Forever Yours,\n"+params.get("sender");
+
+function gift2(){
+window.location="gift2.html?"+params.toString();
 }
 
-document.getElementById("para1").innerText = getData("p1");
-document.getElementById("para2").innerText = getData("p2");
-document.getElementById("para3").innerText = getData("p3");
-
-function openGift2() {
-    window.location.href = "gift2.html" + window.location.search;
+function back(){
+window.location="gifts.html?"+params.toString();
 }
 
 </script>
