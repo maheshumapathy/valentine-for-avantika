@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>My Letter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-background:#ff0000;
+background:#ff3b3b;
 font-family:Georgia;
 text-align:center;
-padding:40px;
+padding:30px;
+color:white;
 }
 
 .box{
-background:#fff3e6;
-padding:30px;
-border-radius:20px;
-width:80%;
+background:#fff5e6;
+color:black;
+padding:25px;
+border-radius:15px;
+max-width:600px;
 margin:auto;
 line-height:1.6;
-white-space:pre-line;
+white-space:pre-wrap;
 }
 
 button{
-margin:20px;
 padding:12px 25px;
+margin:15px;
 border:none;
-border-radius:20px;
-background:#ffc0cb;
+border-radius:8px;
 cursor:pointer;
+font-weight:bold;
 }
 </style>
 </head>
@@ -39,28 +40,34 @@ cursor:pointer;
 
 <div class="box" id="letter"></div>
 
-<button onclick="goGift2()">Open Gift 2 🎵</button>
-<button onclick="goBack()">Back</button>
+<br>
+
+<button onclick="gift2()">Open Gift 2 🎵</button>
+<button onclick="back()">Back</button>
 
 <script>
 
-const params=new URLSearchParams(window.location.search);
+const params = new URLSearchParams(location.search)
+const data = JSON.parse(decodeURIComponent(params.get("data")))
 
-let p1=params.get("p1")||"";
-let p2=params.get("p2")||"";
-let p3=params.get("p3")||"";
-let sender=params.get("sender")||"";
+letter.innerText =
+`${data.p1}
 
-document.getElementById("letter").innerText =
-p1+"\n\n"+p2+"\n\n"+p3+"\n\nForever Yours,\n"+sender;
+${data.p2}
 
-function goGift2(){
-window.location.href="gift2.html"+window.location.search;
+${data.p3}
+
+Forever Yours,
+${data.sender}`
+
+function gift2(){
+location.href = `gift2.html?data=${params.get("data")}`
 }
 
-function goBack(){
-window.location.href="proposal.html"+window.location.search;
+function back(){
+location.href = `gifts.html?data=${params.get("data")}`
 }
+
 </script>
 
 </body>
