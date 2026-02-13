@@ -12,7 +12,7 @@ padding-top:40px;
 }
 
 img{
-width:200px;
+width:220px;
 margin:20px 0;
 }
 
@@ -39,20 +39,16 @@ font-weight:bold;
 
 <script>
 
-function getData(){
-const params=new URLSearchParams(window.location.search);
-return JSON.parse(decodeURIComponent(params.get("data")));
-}
-
-const data=getData();
+const data=JSON.parse(localStorage.getItem("valentineData"));
 
 function gift1(){
-window.location.href="gift1.html?data="+encodeURIComponent(JSON.stringify(data));
+location.href="gift1.html";
 }
 
 function gift2(){
-window.location.href="gift2.html?data="+encodeURIComponent(JSON.stringify(data));
+location.href="gift2.html";
 }
+
 </script>
 
 </body>
