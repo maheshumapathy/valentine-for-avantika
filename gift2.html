@@ -1,82 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Our Playlist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-background:#ff0000;
+background:#ff3b3b;
 text-align:center;
 font-family:Arial;
 padding:40px;
-}
-
-.song{
-margin:25px;
-background:#990000;
-padding:15px;
-border-radius:15px;
 color:white;
 }
 
+.song{
+background:#c40000;
+padding:20px;
+margin:20px;
+border-radius:12px;
+}
+
 button{
-margin:15px;
 padding:12px 25px;
+margin:15px;
 border:none;
-border-radius:20px;
-background:#ffc0cb;
+border-radius:8px;
 cursor:pointer;
+font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Our Playlist 🎶</h1>
+<h1>Our Playlist 🎵</h1>
 
 <div class="song">
 <h3>Song 1</h3>
-<audio controls class="player">
-<source src="music/song1.mp3">
-</audio>
+<audio controls src="music/song1.mp3"></audio>
 </div>
 
 <div class="song">
 <h3>Song 2</h3>
-<audio controls class="player">
-<source src="music/song2.mp3">
-</audio>
+<audio controls src="music/song2.mp3"></audio>
 </div>
 
 <div class="song">
 <h3>Song 3</h3>
-<audio controls class="player">
-<source src="music/song3.mp3">
-</audio>
+<audio controls src="music/song3.mp3"></audio>
 </div>
 
-<button onclick="goLetter()">Back To Letter</button>
-<button onclick="replay()">Replay Everything 🔁</button>
+<button onclick="back()">Back To Letter</button>
+<button onclick="restart()">Replay Everything 🔁</button>
 
 <script>
 
-const players=document.querySelectorAll(".player");
+const audios = document.querySelectorAll("audio")
 
-players.forEach(p=>{
-p.addEventListener("play",()=>{
-players.forEach(other=>{
-if(other!==p){other.pause();}
-});
-});
-});
+audios.forEach(audio=>{
+audio.addEventListener("play",()=>{
+audios.forEach(a=>{
+if(a!==audio) a.pause()
+})
+})
+})
 
-function goLetter(){
-window.location.href="gift1.html"+window.location.search;
+const params = new URLSearchParams(location.search)
+
+function back(){
+location.href = `gift1.html?data=${params.get("data")}`
 }
 
-function replay(){
-window.location.href="index.html";
+function restart(){
+location.href = `proposal.html?data=${params.get("data")}`
 }
 
 </script>
