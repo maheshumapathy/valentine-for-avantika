@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gifts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-    margin:0;
-    background:white;
-    text-align:center;
-    font-family:Arial;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    min-height:100vh;
+background:white;
+text-align:center;
+font-family:Arial;
+padding:40px;
 }
-img{width:200px;}
+
+img{
+width:220px;
+margin:20px;
+}
+
 button{
-    padding:10px 20px;
-    margin:15px;
-    border:none;
-    border-radius:20px;
-    background:#ff4d6d;
-    color:white;
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:red;
+color:white;
 }
 </style>
 </head>
+
 <body>
 
 <img src="gifs/teddy2.gif">
-<h2>I have a Valentine gift for you 🎁</h2>
 
-<button onclick="go1()">Gift 1 💌</button>
-<button onclick="go2()">Gift 2 🎵</button>
+<h2>I Have A Valentine Gift For You 🎁</h2>
+
+<button onclick="openGift1()">Gift 1 💌</button>
+<button onclick="openGift2()">Gift 2 🎵</button>
 
 <script>
-function go1(){window.location.href="./gift1.html";}
-function go2(){window.location.href="./gift2.html";}
+const query = window.location.search;
+
+function openGift1(){
+window.location.href="gift1.html"+query;
+}
+
+function openGift2(){
+window.location.href="gift2.html"+query;
+}
 </script>
 
 </body>
