@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+background:white;
+text-align:center;
+padding:30px;
+}
+
+button{
+display:block;
+margin:20px auto;
+padding:15px 40px;
+font-size:18px;
+border:none;
+border-radius:12px;
+background:pink;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Choose Your Gift 🎁</h2>
+
+<button onclick="gift1()">Gift 1 💌</button>
+<button onclick="gift2()">Gift 2 🎵</button>
+
+<script>
+const params=new URLSearchParams(window.location.search);
+
+function gift1(){
+window.location="gift1.html?"+params.toString();
+}
+
+function gift2(){
+window.location="gift2.html?"+params.toString();
+}
+</script>
+
+</body>
+</html>
