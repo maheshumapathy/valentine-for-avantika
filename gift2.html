@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Playlist</title>
+<meta charset="UTF-8">
+<title>Our Playlist</title>
 
 <style>
 body{
-background:#ff4d6d;
+background:#ff0000;
 text-align:center;
-color:white;
-font-family: Arial;
+font-family:Arial;
+padding:40px;
 }
 
 .song{
-margin:25px auto;
-background:#fff;
+margin:25px;
+background:#990000;
 padding:15px;
 border-radius:15px;
-width:300px;
-color:black;
+color:white;
+}
+
+button{
+margin:15px;
+padding:12px 25px;
+border:none;
+border-radius:20px;
+background:#ffc0cb;
+cursor:pointer;
 }
 </style>
 </head>
@@ -28,35 +37,46 @@ color:black;
 
 <div class="song">
 <h3>Song 1</h3>
-<audio controls src="music/song1.mp3"></audio>
+<audio controls class="player">
+<source src="music/song1.mp3">
+</audio>
 </div>
 
 <div class="song">
 <h3>Song 2</h3>
-<audio controls src="music/song2.mp3"></audio>
+<audio controls class="player">
+<source src="music/song2.mp3">
+</audio>
 </div>
 
 <div class="song">
 <h3>Song 3</h3>
-<audio controls src="music/song3.mp3"></audio>
+<audio controls class="player">
+<source src="music/song3.mp3">
+</audio>
 </div>
 
-<button onclick="restart()">Replay Everything ❤️</button>
+<button onclick="goLetter()">Back To Letter</button>
+<button onclick="replay()">Replay Everything 🔁</button>
 
 <script>
 
-const players = document.querySelectorAll("audio");
+const players=document.querySelectorAll(".player");
 
 players.forEach(p=>{
-p.addEventListener("play", ()=>{
+p.addEventListener("play",()=>{
 players.forEach(other=>{
-if(other!==p) other.pause();
+if(other!==p){other.pause();}
 });
 });
 });
 
-function restart(){
-location.href="index.html";
+function goLetter(){
+window.location.href="gift1.html"+window.location.search;
+}
+
+function replay(){
+window.location.href="index.html";
 }
 
 </script>
