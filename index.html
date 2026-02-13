@@ -2,20 +2,20 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create Proposal</title>
+<title>Create Valentine Link</title>
 
 <style>
 body{
-font-family: Arial;
-background: pink;
+font-family:Arial;
+background:pink;
 text-align:center;
-padding:40px;
+padding:30px;
 }
 
-input, textarea{
-width:80%;
+input,textarea{
+width:85%;
 padding:12px;
-margin:10px;
+margin:8px;
 border-radius:8px;
 border:1px solid #ccc;
 }
@@ -29,15 +29,15 @@ border-radius:10px;
 cursor:pointer;
 }
 
-#generatedLink{
-margin-top:25px;
+#result{
+margin-top:20px;
 }
 </style>
 </head>
 
 <body>
 
-<h2>Create Your Proposal ❤️</h2>
+<h2>Create Valentine Link ❤️</h2>
 
 <input id="receiver" placeholder="Receiver Name"><br>
 <input id="nickname" placeholder="Nickname"><br>
@@ -48,46 +48,47 @@ margin-top:25px;
 <textarea id="p3" placeholder="Paragraph 3"></textarea>
 
 <br>
-<button onclick="generateLink()">Generate Link</button>
+<button onclick="generate()">Generate Link</button>
 
-<div id="generatedLink"></div>
+<div id="result"></div>
 
 <script>
 
-function generateLink(){
+function generate(){
 
-const receiver=document.getElementById("receiver").value.trim();
-const nickname=document.getElementById("nickname").value.trim();
-const sender=document.getElementById("sender").value.trim();
-const p1=document.getElementById("p1").value.trim();
-const p2=document.getElementById("p2").value.trim();
-const p3=document.getElementById("p3").value.trim();
+const r = encodeURIComponent(receiver.value);
+const n = encodeURIComponent(nickname.value);
+const s = encodeURIComponent(sender.value);
+const p1 = encodeURIComponent(document.getElementById("p1").value);
+const p2 = encodeURIComponent(document.getElementById("p2").value);
+const p3 = encodeURIComponent(document.getElementById("p3").value);
 
-if(!receiver || !sender || !p1){
+if(!r || !s || !p1){
 alert("Fill required fields");
 return;
 }
 
-const data={receiver,nickname,sender,p1,p2,p3};
+const link =
+`proposal.html?receiver=${r}&nickname=${n}&sender=${s}&p1=${p1}&p2=${p2}&p3=${p3}`;
 
-const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+const fullLink =
+window.location.origin +
+window.location.pathname.replace("index.html","") +
+link;
 
-const baseURL=window.location.href.replace("index.html","");
-const finalLink=baseURL+"proposal.html?data="+encoded;
-
-document.getElementById("generatedLink").innerHTML=
+document.getElementById("result").innerHTML =
 `
-<p>Share this link ❤️</p>
-<input id="linkBox" value="${finalLink}" readonly style="width:85%;padding:10px;">
+<p>Copy and send this link ❤️</p>
+<input value="${fullLink}" id="copyBox" readonly style="width:85%;padding:10px">
 <br><br>
-<button onclick="copyLink()">Copy Link</button>
+<button onclick="copy()">Copy Link</button>
 `;
 
 }
 
-function copyLink(){
-const copy=document.getElementById("linkBox");
-copy.select();
+function copy(){
+const box = document.getElementById("copyBox");
+box.select();
 document.execCommand("copy");
 alert("Link copied!");
 }
