@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Proposal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
 <style>
+
 body{
-background:pink;
+background:#ffc0cb;
 text-align:center;
-font-family:Arial;
+padding:30px;
+font-family:'Dancing Script',cursive;
 }
+
+h1{
+font-size:40px;
+}
+
+img{
+width:220px;
+margin-top:20px;
+}
+
 button{
-padding:15px 30px;
 margin:15px;
-border-radius:25px;
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
+
+.yes{background:red;color:white;}
+.no{background:white;}
+
 </style>
 </head>
 
 <body>
 
-<h1 id="title"></h1>
+<h1 id="text"></h1>
 
-<img src="gifs/teddy1.gif" width="250">
+<img src="gifs/teddy1.gif">
 
-<h2>Will you be my Valentine?</h2>
+<br>
 
-<button onclick="yes()">YES ❤️</button>
-<button onclick="alert('Try again 😜')">NO 💔</button>
+<button class="yes" onclick="yes()">Yes ❤️</button>
+<button class="no" onclick="no()">No 💔</button>
 
 <script>
 
-let p=new URLSearchParams(window.location.search);
+const params=new URLSearchParams(window.location.search);
 
-let receiver=p.get("receiver");
-let nick=p.get("nick");
-
-document.getElementById("title").innerText=`Hey ${nick || receiver} ❤️`;
+document.getElementById("text").innerText=
+params.get("receiver")+" will you be my Valentine? ❤️";
 
 function yes(){
-window.location.href=
-`success.html${window.location.search}`;
+window.location="gifts.html?"+params.toString();
 }
+
+function no(){
+alert("No worries 🙂 I still wish you happiness.");
+}
+
 </script>
 
 </body>
