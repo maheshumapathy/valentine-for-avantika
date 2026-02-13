@@ -1,94 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<title>Gift 1</title>
 
 <style>
-
 body{
-background:red;
+background:#ff4d6d;
 text-align:center;
-padding:25px;
-margin:0;
+color:white;
+font-family: Arial;
 }
 
-.card{
-background:white;
-padding:25px;
+img{
+width:250px;
+margin:20px;
 border-radius:20px;
-max-width:650px;
-margin:auto;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
-}
-
-.letter{
-font-family:'Playfair Display';
-font-size:18px;
-margin:18px 0;
-white-space:pre-line;   /* ⭐ THIS FIXES PARAGRAPH BREAKS */
-line-height:1.6;
-}
-
-.signature{
-font-family:'Dancing Script';
-font-size:28px;
-margin-top:25px;
 }
 
 button{
-margin:12px;
-padding:10px 25px;
+margin:15px;
+padding:12px 25px;
 border:none;
 border-radius:10px;
-background:pink;
+background:white;
+color:#ff4d6d;
 cursor:pointer;
-font-size:16px;
 }
-
 </style>
 </head>
 
 <body>
 
-<h2 style="color:white;">My Letter ❤️</h2>
+<h1>Your Gift ❤️</h1>
 
-<div class="card">
+<img src="gifs/teddy1.gif"><br>
+<img src="gifs/teddy2.gif"><br>
 
-<p class="letter" id="p1"></p>
-<p class="letter" id="p2"></p>
-<p class="letter" id="p3"></p>
-
-<p class="signature" id="sign"></p>
-
-</div>
-
-<button onclick="gift2()">Open Gift 2 🎵</button>
-<button onclick="back()">Back</button>
+<button onclick="letter()">Back To Letter</button>
+<button onclick="next()">Open Playlist 🎵</button>
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
-
-function setParagraph(id){
-let text = params.get(id) || "";
-document.getElementById(id).textContent = text;
+function letter(){
+history.back();
 }
 
-setParagraph("p1");
-setParagraph("p2");
-setParagraph("p3");
-
-document.getElementById("sign").textContent =
-"Forever Yours,\n" + (params.get("sender") || "");
-
-function gift2(){
-window.location = "gift2.html?" + params.toString();
-}
-
-function back(){
-window.location = "gifts.html?" + params.toString();
+function next(){
+location.href="gift2.html";
 }
 
 </script>
