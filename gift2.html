@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Gift 2 🎶</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-    background: #ff2b2b;
-    text-align: center;
-    font-family: Arial, sans-serif;
+
+body{
+background:red;
+text-align:center;
+padding:25px;
+color:white;
 }
 
-h1 {
-    color: white;
-    margin-top: 20px;
+.song{
+margin:30px;
 }
 
-.songBox {
-    background: #b30000;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 15px;
-    width: 80%;
-    max-width: 400px;
+audio{
+width:80%;
 }
 
-.songTitle {
-    color: white;
-    margin-bottom: 10px;
+button{
+margin:10px;
+padding:10px 25px;
+border:none;
+border-radius:10px;
+background:pink;
+cursor:pointer;
 }
+
 </style>
 </head>
 
 <body>
 
-<h1>Our Playlist 🎶</h1>
+<h2>Our Playlist 🎵</h2>
 
-<div class="songBox">
-    <div class="songTitle">Song 1 ❤️</div>
-    <audio controls class="music">
-        <source src="music/song1.mp3" type="audio/mp3">
-    </audio>
+<div class="song">
+<h3>Song 1</h3>
+<audio controls src="music/song1.mp3"></audio>
 </div>
 
-<div class="songBox">
-    <div class="songTitle">Song 2 💕</div>
-    <audio controls class="music">
-        <source src="music/song2.mp3" type="audio/mp3">
-    </audio>
+<div class="song">
+<h3>Song 2</h3>
+<audio controls src="music/song2.mp3"></audio>
 </div>
 
-<div class="songBox">
-    <div class="songTitle">Song 3 💖</div>
-    <audio controls class="music">
-        <source src="music/song3.mp3" type="audio/mp3">
-    </audio>
+<div class="song">
+<h3>Song 3</h3>
+<audio controls src="music/song3.mp3"></audio>
 </div>
+
+<button onclick="gift1()">Back To Letter 💌</button>
+<button onclick="restart()">Replay Everything 🔁</button>
 
 <script>
 
-// Only one song plays at a time
-const players = document.querySelectorAll(".music");
+const params=new URLSearchParams(window.location.search);
 
-players.forEach(player => {
-    player.addEventListener("play", () => {
-        players.forEach(other => {
-            if (other !== player) other.pause();
-        });
-    });
+const players=document.querySelectorAll("audio");
+
+players.forEach(p=>{
+p.addEventListener("play",()=>{
+players.forEach(other=>{
+if(other!==p){other.pause();}
 });
+});
+});
+
+function gift1(){
+window.location="gift1.html?"+params.toString();
+}
+
+function restart(){
+window.location="proposal.html?"+params.toString();
+}
 
 </script>
 
