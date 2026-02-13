@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playlist</title>
 
 <style>
-
 body{
-background:red;
+background:#ff4d6d;
 text-align:center;
-padding:25px;
 color:white;
+font-family: Arial;
 }
 
 .song{
-margin:30px;
+margin:25px auto;
+background:#fff;
+padding:15px;
+border-radius:15px;
+width:300px;
+color:black;
 }
-
-audio{
-width:80%;
-}
-
-button{
-margin:10px;
-padding:10px 25px;
-border:none;
-border-radius:10px;
-background:pink;
-cursor:pointer;
-}
-
 </style>
 </head>
 
 <body>
 
-<h2>Our Playlist 🎵</h2>
+<h1>Our Playlist 🎶</h1>
 
 <div class="song">
 <h3>Song 1</h3>
@@ -51,29 +41,22 @@ cursor:pointer;
 <audio controls src="music/song3.mp3"></audio>
 </div>
 
-<button onclick="gift1()">Back To Letter 💌</button>
-<button onclick="restart()">Replay Everything 🔁</button>
+<button onclick="restart()">Replay Everything ❤️</button>
 
 <script>
 
-const params=new URLSearchParams(window.location.search);
-
-const players=document.querySelectorAll("audio");
+const players = document.querySelectorAll("audio");
 
 players.forEach(p=>{
-p.addEventListener("play",()=>{
+p.addEventListener("play", ()=>{
 players.forEach(other=>{
-if(other!==p){other.pause();}
+if(other!==p) other.pause();
 });
 });
 });
-
-function gift1(){
-window.location="gift1.html?"+params.toString();
-}
 
 function restart(){
-window.location="proposal.html?"+params.toString();
+location.href="index.html";
 }
 
 </script>
