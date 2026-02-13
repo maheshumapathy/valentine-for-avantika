@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<title>My Letter</title>
 
 <style>
-
 body{
-background:#ffc0cb;
+background:#ff4d6d;
+font-family: Georgia;
+color:#333;
 text-align:center;
 padding:30px;
-font-family:'Dancing Script',cursive;
 }
 
-h1{
-font-size:40px;
-}
-
-img{
-width:220px;
-margin-top:20px;
+.box{
+background:#fff8f0;
+padding:30px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+white-space:pre-wrap;
+line-height:1.7;
 }
 
 button{
 margin:15px;
 padding:12px 25px;
-font-size:18px;
 border:none;
 border-radius:10px;
+background:#ff4d6d;
+color:white;
 cursor:pointer;
 }
-
-.yes{background:red;color:white;}
-.no{background:white;}
-
 </style>
 </head>
 
 <body>
 
-<h1 id="text"></h1>
+<h1>My Letter ❤️</h1>
 
-<img src="gifs/teddy1.gif">
+<div class="box">
 
-<br>
+<p id="p1"></p>
+<p id="p2"></p>
+<p id="p3"></p>
 
-<button class="yes" onclick="yes()">Yes ❤️</button>
-<button class="no" onclick="no()">No 💔</button>
+<h3 id="sign"></h3>
+
+</div>
+
+<button onclick="next()">Open Gift 🎁</button>
 
 <script>
 
-const params=new URLSearchParams(window.location.search);
+const params = new URLSearchParams(location.search);
+const data = JSON.parse(decodeURIComponent(params.get("data")));
 
-document.getElementById("text").innerText=
-params.get("receiver")+" will you be my Valentine? ❤️";
+p1.innerText=data.p1;
+p2.innerText=data.p2;
+p3.innerText=data.p3;
 
-function yes(){
-window.location="gifts.html?"+params.toString();
-}
+sign.innerText="Forever Yours,\n"+data.sender;
 
-function no(){
-alert("No worries 🙂 I still wish you happiness.");
+localStorage.setItem("valentineData", JSON.stringify(data));
+
+function next(){
+location.href="gift1.html";
 }
 
 </script>
