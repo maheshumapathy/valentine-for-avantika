@@ -11,36 +11,42 @@ body{
 background:red;
 text-align:center;
 padding:25px;
+margin:0;
 }
 
 .card{
 background:white;
 padding:25px;
 border-radius:20px;
-max-width:600px;
+max-width:650px;
 margin:auto;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
 .letter{
 font-family:'Playfair Display';
 font-size:18px;
-margin:15px 0;
+margin:18px 0;
+white-space:pre-line;   /* ⭐ THIS FIXES PARAGRAPH BREAKS */
+line-height:1.6;
 }
 
 .signature{
 font-family:'Dancing Script';
 font-size:28px;
-margin-top:20px;
+margin-top:25px;
 }
 
 button{
-margin:10px;
+margin:12px;
 padding:10px 25px;
 border:none;
 border-radius:10px;
 background:pink;
 cursor:pointer;
+font-size:16px;
 }
+
 </style>
 </head>
 
@@ -49,10 +55,13 @@ cursor:pointer;
 <h2 style="color:white;">My Letter ❤️</h2>
 
 <div class="card">
+
 <p class="letter" id="p1"></p>
 <p class="letter" id="p2"></p>
 <p class="letter" id="p3"></p>
+
 <p class="signature" id="sign"></p>
+
 </div>
 
 <button onclick="gift2()">Open Gift 2 🎵</button>
@@ -60,21 +69,26 @@ cursor:pointer;
 
 <script>
 
-const params=new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
-["p1","p2","p3"].forEach(id=>{
-document.getElementById(id).innerText=params.get(id);
-});
+function setParagraph(id){
+let text = params.get(id) || "";
+document.getElementById(id).textContent = text;
+}
 
-document.getElementById("sign").innerText=
-"Forever Yours,\n"+params.get("sender");
+setParagraph("p1");
+setParagraph("p2");
+setParagraph("p3");
+
+document.getElementById("sign").textContent =
+"Forever Yours,\n" + (params.get("sender") || "");
 
 function gift2(){
-window.location="gift2.html?"+params.toString();
+window.location = "gift2.html?" + params.toString();
 }
 
 function back(){
-window.location="gifts.html?"+params.toString();
+window.location = "gifts.html?" + params.toString();
 }
 
 </script>
