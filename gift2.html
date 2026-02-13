@@ -14,7 +14,7 @@ padding:30px;
 .song{
 background:#c62828;
 padding:25px;
-margin:40px auto; /* ⭐ EXTRA SPACE BETWEEN SONGS */
+margin:45px auto;
 border-radius:18px;
 width:90%;
 max-width:450px;
@@ -62,22 +62,14 @@ margin:15px;
 
 <script>
 
-function getData(){
-const params=new URLSearchParams(window.location.search);
-return JSON.parse(decodeURIComponent(params.get("data")));
-}
-
-const data=getData();
-
 function back(){
-window.location.href="gift1.html?data="+encodeURIComponent(JSON.stringify(data));
+location.href="gift1.html";
 }
 
 function restart(){
-window.location.href="proposal.html?data="+encodeURIComponent(JSON.stringify(data));
+localStorage.removeItem("valentineData");
+location.href="proposal.html";
 }
-
-/* Only One Song Play */
 
 const players=document.querySelectorAll("audio");
 
@@ -88,6 +80,7 @@ if(o!==p) o.pause();
 });
 });
 });
+
 </script>
 
 </body>
