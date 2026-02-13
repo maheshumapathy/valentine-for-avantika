@@ -2,33 +2,31 @@
 <html>
 <head>
 <title>Create Proposal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
 body{
 background:#ff3b3b;
-font-family:Arial;
+font-family:sans-serif;
 text-align:center;
-padding:40px;
 color:white;
+padding:30px;
 }
-
 input,textarea{
 width:80%;
-padding:12px;
+padding:10px;
 margin:10px;
-border-radius:8px;
+border-radius:10px;
 border:none;
 }
-
 button{
 padding:12px 25px;
-background:#fff;
 border:none;
-border-radius:8px;
-cursor:pointer;
+border-radius:20px;
+background:white;
+color:red;
 font-weight:bold;
+cursor:pointer;
 }
+a{color:white; display:block; margin-top:20px;}
 </style>
 </head>
 
@@ -44,28 +42,27 @@ font-weight:bold;
 <textarea id="p2" placeholder="Paragraph 2"></textarea>
 <textarea id="p3" placeholder="Paragraph 3"></textarea>
 
-<br>
 <button onclick="generate()">Generate Link</button>
 
-<p id="link"></p>
+<a id="link"></a>
 
 <script>
 function generate(){
-
-const data = {
+let data={
 receiver:receiver.value,
 nickname:nickname.value,
 sender:sender.value,
 p1:p1.value,
 p2:p2.value,
 p3:p3.value
-}
+};
 
-const encoded = encodeURIComponent(JSON.stringify(data))
+let encoded=encodeURIComponent(JSON.stringify(data));
 
-const url = `proposal.html?data=${encoded}`
+let url="proposal.html?data="+encoded;
 
-link.innerHTML = `<a href="${url}" target="_blank">${url}</a>`
+document.getElementById("link").href=url;
+document.getElementById("link").innerText=url;
 }
 </script>
 
