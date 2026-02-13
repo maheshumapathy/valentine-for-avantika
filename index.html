@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Create Proposal</title>
 
 <style>
 body{
@@ -13,14 +12,13 @@ color:white;
 padding:20px;
 }
 
-input, textarea{
+input,textarea{
 width:90%;
 max-width:420px;
 padding:12px;
 margin:10px;
 border-radius:12px;
 border:none;
-font-size:15px;
 }
 
 button{
@@ -31,7 +29,6 @@ background:white;
 color:#ff4d6d;
 font-weight:bold;
 cursor:pointer;
-margin-top:15px;
 }
 
 #result{
@@ -60,21 +57,21 @@ word-break:break-word;
 <script>
 function generate(){
 
-const data = {
-receiver: document.getElementById("receiver").value,
-nickname: document.getElementById("nickname").value,
-sender: document.getElementById("sender").value,
-p1: document.getElementById("p1").value,
-p2: document.getElementById("p2").value,
-p3: document.getElementById("p3").value
+const data={
+receiver:receiver.value,
+nickname:nickname.value,
+sender:sender.value,
+p1:p1.value,
+p2:p2.value,
+p3:p3.value
 };
 
-const encoded = encodeURIComponent(JSON.stringify(data));
+const encoded=encodeURIComponent(JSON.stringify(data));
 
-const link = "proposal.html?data="+encoded;
+const link="proposal.html?data="+encoded;
 
-document.getElementById("result").innerText =
-window.location.origin + window.location.pathname.replace("index.html","") + link;
+document.getElementById("result").innerText=
+window.location.origin+"/"+link;
 }
 </script>
 
