@@ -1,55 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine</title>
+<title>Valentine Proposal</title>
 
 <style>
 body{
-    margin:0;
-    background:#ff2e2e;
-    color:white;
-    text-align:center;
-    font-family:Arial;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    min-height:100vh;
+font-family:Arial;
+background:red;
+text-align:center;
+color:white;
+padding:30px;
 }
-img{width:200px;}
+
+img{
+width:200px;
+margin:20px;
+}
+
+.box{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+margin:20px auto;
+width:85%;
+}
+
 button{
-    padding:10px 20px;
-    margin:10px;
-    border:none;
-    border-radius:20px;
-    cursor:pointer;
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 </style>
 </head>
+
 <body>
 
 <h2 id="title"></h2>
-<img src="gifs/teddy1.gif">
-<h3>Will you be my Valentine?</h3>
 
-<div>
-<button onclick="yes()">Yes ❤️</button>
-<button onclick="no()">No 😢</button>
+<img src="gifs/teddy1.gif">
+
+<div class="box">
+
+<p id="p1"></p>
+<p id="p2"></p>
+<p id="p3"></p>
+
+<br>
+<p id="sign"></p>
+
 </div>
 
+<button onclick="alert('YES CLICKED ❤️')">Yes ❤️</button>
+<button onclick="alert('NO CLICKED 😭')">No 😭</button>
+
 <script>
-const data=JSON.parse(localStorage.getItem("valentineData"));
-if(data){
-    title.innerText="Hey "+data.receiver+" ❤️";
+
+function getData(){
+
+const params=new URLSearchParams(window.location.search);
+const encoded=params.get("data");
+
+if(!encoded) return {};
+
+try{
+return JSON.parse(decodeURIComponent(escape(atob(encoded))));
 }
-function yes(){
-    window.location.href="./gifts.html";
+catch{
+return {};
 }
-function no(){
-    alert("Think again 😌");
+
 }
+
+const data=getData();
+
+document.getElementById("title").innerText=
+"Hey "+(data.receiver || "")+", Will You Be My Valentine?";
+
+document.getElementById("p1").innerText=data.p1 || "";
+document.getElementById("p2").innerText=data.p2 || "";
+document.getElementById("p3").innerText=data.p3 || "";
+
+document.getElementById("sign").innerText=
+"Forever Yours, "+(data.sender || "");
+
 </script>
 
 </body>
