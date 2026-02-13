@@ -1,61 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Letter</title>
 
 <style>
 body{
-background:#ff4d4d;
-font-family:Georgia;
-text-align:center;
-padding:30px;
+    margin:0;
+    background:#ff2e2e;
+    font-family:Arial;
+    text-align:center;
+    color:white;
+    padding:20px;
 }
-
 .box{
-background:white;
-padding:25px;
-border-radius:20px;
-margin:20px auto;
-width:90%;
-max-width:600px;
-white-space:pre-line;
-font-size:18px;
-line-height:1.6;
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:15px;
+    margin:20px auto;
+    max-width:600px;
+    white-space:pre-line;
 }
-
 button{
-padding:12px 25px;
-border:none;
-border-radius:12px;
-background:white;
-color:#ff4d4d;
-margin-top:15px;
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    border-radius:20px;
 }
 </style>
 </head>
-
 <body>
 
 <h2>My Letter ❤️</h2>
-
 <div class="box" id="letter"></div>
 
-<p id="senderText"></p>
-
-<button onclick="gift2()">Open Gift 2 🎵</button>
+<button onclick="music()">Open Gift 2 🎵</button>
 
 <script>
-
 const data=JSON.parse(localStorage.getItem("valentineData"));
-
-letter.innerText=data.p1+"\n\n"+data.p2+"\n\n"+data.p3;
-
-senderText.innerText="Forever Yours,\n"+data.sender;
-
-function gift2(){
-location.href="gift2.html";
+if(data){
+    letter.innerText=data.p1+"\n\n"+data.p2+"\n\n"+data.p3+
+    "\n\nForever Yours,\n"+data.sender;
 }
-
+function music(){
+    window.location.href="./gift2.html";
+}
 </script>
 
 </body>
