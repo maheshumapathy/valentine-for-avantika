@@ -1,67 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine</title>
 
 <style>
 body{
-background:pink;
-text-align:center;
-font-family:Arial;
-padding-top:40px;
+    margin:0;
+    background:#ff2e2e;
+    color:white;
+    text-align:center;
+    font-family:Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    min-height:100vh;
 }
-
-img{
-width:220px;
-margin:20px 0;
-}
-
+img{width:200px;}
 button{
-padding:12px 25px;
-margin:10px;
-border:none;
-border-radius:12px;
-background:#ff4d6d;
-color:white;
-font-weight:bold;
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
 }
 </style>
 </head>
-
 <body>
 
-<h2 id="receiverText"></h2>
-
+<h2 id="title"></h2>
 <img src="gifs/teddy1.gif">
-
 <h3>Will you be my Valentine?</h3>
 
+<div>
 <button onclick="yes()">Yes ❤️</button>
-<button onclick="alert('Try again 😜')">No</button>
+<button onclick="no()">No 😢</button>
+</div>
 
 <script>
-
-function getData(){
-const params=new URLSearchParams(location.search);
-const raw=params.get("data");
-
-if(raw){
-const decoded=JSON.parse(decodeURIComponent(raw));
-localStorage.setItem("valentineData",JSON.stringify(decoded));
-return decoded;
+const data=JSON.parse(localStorage.getItem("valentineData"));
+if(data){
+    title.innerText="Hey "+data.receiver+" ❤️";
 }
-
-return JSON.parse(localStorage.getItem("valentineData"));
-}
-
-const data=getData();
-
-receiverText.innerText="Hey "+data.receiver;
-
 function yes(){
-location.href="gifts.html";
+    window.location.href="./gifts.html";
 }
-
+function no(){
+    alert("Think again 😌");
+}
 </script>
+
 </body>
 </html>
