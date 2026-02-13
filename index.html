@@ -1,75 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Valentine Proposal</title>
 
 <style>
 body{
+background:#ffc0cb;
 font-family: Arial;
-background:#ff4d6d;
-color:white;
 text-align:center;
-padding:40px;
-}
-
-input, textarea{
-width:80%;
-max-width:500px;
-padding:12px;
-margin:10px;
-border-radius:10px;
-border:none;
+padding-top:120px;
 }
 
 button{
-padding:12px 25px;
+padding:15px 40px;
+font-size:18px;
+margin:15px;
 border:none;
-border-radius:10px;
-background:white;
-color:#ff4d6d;
-font-weight:bold;
+border-radius:25px;
 cursor:pointer;
 }
+
+.yes{background:#ff4d6d;color:white;}
 </style>
 </head>
 
 <body>
 
-<h1>Create Your Proposal ❤️</h1>
+<h1>Hey Avantika ❤️</h1>
+<h2>Will You Be My Valentine?</h2>
 
-<input id="receiver" placeholder="Receiver Name"><br>
-<input id="nickname" placeholder="Nickname"><br>
-<input id="sender" placeholder="Your Name"><br>
-
-<textarea id="p1" placeholder="Paragraph 1"></textarea>
-<textarea id="p2" placeholder="Paragraph 2"></textarea>
-<textarea id="p3" placeholder="Paragraph 3"></textarea>
-
-<button onclick="generate()">Generate Link</button>
-
-<p id="link"></p>
+<button class="yes" onclick="goNext()">Yes 💖</button>
 
 <script>
-
-function generate(){
-
-const data={
-receiver:receiver.value,
-nickname:nickname.value,
-sender:sender.value,
-p1:p1.value,
-p2:p2.value,
-p3:p3.value
-};
-
-const encoded = encodeURIComponent(JSON.stringify(data));
-
-const url = `proposal.html?data=${encoded}`;
-
-document.getElementById("link").innerHTML =
-`<a href="${url}" target="_blank">${location.origin}/${url}</a>`;
+function goNext(){
+window.location.href="proposal.html"+window.location.search;
 }
-
 </script>
 
 </body>
