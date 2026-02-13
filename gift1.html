@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Letter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-    margin:0;
-    background:#ff2e2e;
-    font-family:Arial;
-    text-align:center;
-    color:white;
-    padding:20px;
+background:red;
+font-family:Arial;
+text-align:center;
+padding:40px;
 }
+
 .box{
-    background:white;
-    color:black;
-    padding:20px;
-    border-radius:15px;
-    margin:20px auto;
-    max-width:600px;
-    white-space:pre-line;
+background:white;
+padding:20px;
+border-radius:15px;
+width:80%;
+margin:auto;
+white-space:pre-line;
 }
+
 button{
-    padding:10px 20px;
-    margin:10px;
-    border:none;
-    border-radius:20px;
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 </style>
 </head>
+
 <body>
 
 <h2>My Letter ❤️</h2>
-<div class="box" id="letter"></div>
 
-<button onclick="music()">Open Gift 2 🎵</button>
+<div class="box">
+<p id="letter"></p>
+<p id="sign"></p>
+</div>
+
+<button onclick="goMusic()">Open Gift 2 🎵</button>
 
 <script>
-const data=JSON.parse(localStorage.getItem("valentineData"));
-if(data){
-    letter.innerText=data.p1+"\n\n"+data.p2+"\n\n"+data.p3+
-    "\n\nForever Yours,\n"+data.sender;
-}
-function music(){
-    window.location.href="./gift2.html";
+const p = new URLSearchParams(window.location.search);
+
+const p1 = decodeURIComponent(p.get("p1")||"");
+const p2 = decodeURIComponent(p.get("p2")||"");
+const p3 = decodeURIComponent(p.get("p3")||"");
+const sender = decodeURIComponent(p.get("sender")||"");
+
+letter.innerText = p1+"\n\n"+p2+"\n\n"+p3;
+sign.innerText = "Forever Yours,\n"+sender;
+
+function goMusic(){
+window.location.href="gift2.html"+window.location.search;
 }
 </script>
 
