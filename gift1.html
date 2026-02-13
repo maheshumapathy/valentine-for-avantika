@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Gift 1 💌</title>
+
 <style>
-body{
-background:red;
-color:white;
-text-align:center;
+body {
+    background: #ff2b2b;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
 }
-.box{
-background:white;
-color:black;
-width:70%;
-margin:auto;
-padding:20px;
-border-radius:20px;
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+h1 {
+    color: white;
+}
+
+.nextBtn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: pink;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -22,18 +42,29 @@ border-radius:20px;
 
 <h1>My Letter ❤️</h1>
 
-<div class="box">
-<p id="p1"></p>
-<p id="p2"></p>
-<p id="p3"></p>
+<div class="card">
+    <p id="para1"></p>
+    <p id="para2"></p>
+    <p id="para3"></p>
+
+    <button class="nextBtn" onclick="openGift2()">Open Gift 2 🎵</button>
 </div>
 
 <script>
-let p=new URLSearchParams(window.location.search);
 
-document.getElementById("p1").innerText=p.get("p1");
-document.getElementById("p2").innerText=p.get("p2");
-document.getElementById("p3").innerText=p.get("p3");
+function getData(name) {
+    const params = new URLSearchParams(window.location.search);
+    return decodeURIComponent(params.get(name) || "");
+}
+
+document.getElementById("para1").innerText = getData("p1");
+document.getElementById("para2").innerText = getData("p2");
+document.getElementById("para3").innerText = getData("p3");
+
+function openGift2() {
+    window.location.href = "gift2.html" + window.location.search;
+}
+
 </script>
 
 </body>
