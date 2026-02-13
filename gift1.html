@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Gift 1</title>
+<meta charset="UTF-8">
+<title>My Letter</title>
 
 <style>
 body{
-background:#ff4d6d;
+background:#ff0000;
+font-family:Georgia;
 text-align:center;
-color:white;
-font-family: Arial;
+padding:40px;
 }
 
-img{
-width:250px;
-margin:20px;
+.box{
+background:#fff3e6;
+padding:30px;
 border-radius:20px;
+width:80%;
+margin:auto;
+line-height:1.6;
+white-space:pre-line;
 }
 
 button{
-margin:15px;
+margin:20px;
 padding:12px 25px;
 border:none;
-border-radius:10px;
-background:white;
-color:#ff4d6d;
+border-radius:20px;
+background:#ffc0cb;
 cursor:pointer;
 }
 </style>
@@ -31,24 +35,32 @@ cursor:pointer;
 
 <body>
 
-<h1>Your Gift ❤️</h1>
+<h1>My Letter ❤️</h1>
 
-<img src="gifs/teddy1.gif"><br>
-<img src="gifs/teddy2.gif"><br>
+<div class="box" id="letter"></div>
 
-<button onclick="letter()">Back To Letter</button>
-<button onclick="next()">Open Playlist 🎵</button>
+<button onclick="goGift2()">Open Gift 2 🎵</button>
+<button onclick="goBack()">Back</button>
 
 <script>
 
-function letter(){
-history.back();
+const params=new URLSearchParams(window.location.search);
+
+let p1=params.get("p1")||"";
+let p2=params.get("p2")||"";
+let p3=params.get("p3")||"";
+let sender=params.get("sender")||"";
+
+document.getElementById("letter").innerText =
+p1+"\n\n"+p2+"\n\n"+p3+"\n\nForever Yours,\n"+sender;
+
+function goGift2(){
+window.location.href="gift2.html"+window.location.search;
 }
 
-function next(){
-location.href="gift2.html";
+function goBack(){
+window.location.href="proposal.html"+window.location.search;
 }
-
 </script>
 
 </body>
