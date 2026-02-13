@@ -11,17 +11,29 @@ text-align:center;
 padding:40px;
 }
 
+/* FIXED LETTER BOX */
 .box{
 background:white;
-padding:20px;
-border-radius:15px;
-width:80%;
+padding:25px;
+border-radius:20px;
+width:90%;
+max-width:500px;
 margin:auto;
-white-space:pre-line;
+text-align:left;
+line-height:1.6;
+word-wrap:break-word;
+white-space:pre-wrap;
+}
+
+/* Signature centered */
+.signature{
+text-align:center;
+margin-top:20px;
+font-weight:bold;
 }
 
 button{
-margin-top:20px;
+margin-top:25px;
 padding:12px 25px;
 border:none;
 border-radius:10px;
@@ -35,8 +47,8 @@ cursor:pointer;
 <h2>My Letter ❤️</h2>
 
 <div class="box">
-<p id="letter"></p>
-<p id="sign"></p>
+<p id="letterText"></p>
+<p id="sign" class="signature"></p>
 </div>
 
 <button onclick="goMusic()">Open Gift 2 🎵</button>
@@ -44,16 +56,18 @@ cursor:pointer;
 <script>
 const p = new URLSearchParams(window.location.search);
 
-const p1 = decodeURIComponent(p.get("p1")||"");
-const p2 = decodeURIComponent(p.get("p2")||"");
-const p3 = decodeURIComponent(p.get("p3")||"");
-const sender = decodeURIComponent(p.get("sender")||"");
+const p1 = decodeURIComponent(p.get("p1") || "");
+const p2 = decodeURIComponent(p.get("p2") || "");
+const p3 = decodeURIComponent(p.get("p3") || "");
+const sender = decodeURIComponent(p.get("sender") || "");
 
-letter.innerText = p1+"\n\n"+p2+"\n\n"+p3;
-sign.innerText = "Forever Yours,\n"+sender;
+/* FIXED TEXT RENDER */
+letterText.textContent = p1 + "\n\n" + p2 + "\n\n" + p3;
+
+sign.textContent = "Forever Yours,\n" + sender;
 
 function goMusic(){
-window.location.href="gift2.html"+window.location.search;
+window.location.href = "gift2.html" + window.location.search;
 }
 </script>
 
