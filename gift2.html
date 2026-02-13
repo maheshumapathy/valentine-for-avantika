@@ -1,86 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playlist</title>
 
 <style>
 body{
-background:#ff4d4d;
-text-align:center;
-font-family:Arial;
-padding:30px;
+    margin:0;
+    background:#ff2e2e;
+    text-align:center;
+    font-family:Arial;
+    color:white;
 }
-
 .song{
-background:#c62828;
-padding:25px;
-margin:45px auto;
-border-radius:18px;
-width:90%;
-max-width:450px;
-color:white;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    margin:30px auto;
 }
-
-audio{
-width:100%;
-margin-top:15px;
-}
-
 button{
-padding:12px 25px;
-border:none;
-border-radius:12px;
-background:white;
-color:#ff4d4d;
-margin:15px;
+    padding:10px 20px;
+    margin:20px;
+    border:none;
+    border-radius:20px;
 }
 </style>
 </head>
-
 <body>
 
-<h2>Our Playlist 🎶</h2>
+<h2>Our Playlist 🎵</h2>
 
 <div class="song">
-<h3>Song 1</h3>
 <audio controls src="music/song1.mp3"></audio>
 </div>
 
 <div class="song">
-<h3>Song 2</h3>
 <audio controls src="music/song2.mp3"></audio>
 </div>
 
 <div class="song">
-<h3>Song 3</h3>
 <audio controls src="music/song3.mp3"></audio>
 </div>
 
 <button onclick="back()">Back To Letter</button>
-<button onclick="restart()">Replay Everything 🔄</button>
+<button onclick="restart()">Replay Everything</button>
 
 <script>
-
-function back(){
-location.href="gift1.html";
-}
-
+function back(){window.location.href="./gift1.html";}
 function restart(){
-localStorage.removeItem("valentineData");
-location.href="proposal.html";
+    localStorage.clear();
+    window.location.href="./index.html";
 }
-
-const players=document.querySelectorAll("audio");
-
-players.forEach(p=>{
-p.addEventListener("play",()=>{
-players.forEach(o=>{
-if(o!==p) o.pause();
-});
-});
-});
-
 </script>
 
 </body>
