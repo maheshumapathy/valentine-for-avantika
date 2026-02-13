@@ -2,18 +2,18 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Create Link</title>
+<title>Create Proposal</title>
 
 <style>
 body{
-font-family: Arial;
+font-family:Arial;
 background:pink;
 text-align:center;
 padding:30px;
 }
 
-input,textarea{
-width:85%;
+input, textarea{
+width:80%;
 padding:12px;
 margin:8px;
 border-radius:8px;
@@ -29,7 +29,7 @@ border-radius:10px;
 cursor:pointer;
 }
 
-#result{
+#linkBox{
 margin-top:25px;
 }
 </style>
@@ -37,7 +37,7 @@ margin-top:25px;
 
 <body>
 
-<h2>Create Your Valentine Link ❤️</h2>
+<h2>Create Your Proposal ❤️</h2>
 
 <input id="receiver" placeholder="Receiver Name"><br>
 <input id="nickname" placeholder="Nickname"><br>
@@ -48,55 +48,40 @@ margin-top:25px;
 <textarea id="p3" placeholder="Paragraph 3"></textarea>
 
 <br>
-<button onclick="generateLink()">Generate Link</button>
+<button onclick="generate()">Generate Link</button>
 
-<div id="result"></div>
+<div id="linkBox"></div>
 
 <script>
+function generate(){
 
-function generateLink(){
+const data = {
+receiver: encodeURIComponent(receiver.value),
+nickname: encodeURIComponent(nickname.value),
+sender: encodeURIComponent(sender.value),
+p1: encodeURIComponent(p1.value),
+p2: encodeURIComponent(p2.value),
+p3: encodeURIComponent(p3.value)
+};
 
-const receiver = encodeURIComponent(document.getElementById("receiver").value);
-const nickname = encodeURIComponent(document.getElementById("nickname").value);
-const sender = encodeURIComponent(document.getElementById("sender").value);
-const p1 = encodeURIComponent(document.getElementById("p1").value);
-const p2 = encodeURIComponent(document.getElementById("p2").value);
-const p3 = encodeURIComponent(document.getElementById("p3").value);
+const base = window.location.origin + window.location.pathname.replace("index.html","");
 
-if(!receiver || !sender || !p1){
-alert("Please fill required fields");
-return;
-}
+const link = base+"proposal.html?"+
+`receiver=${data.receiver}&nickname=${data.nickname}&sender=${data.sender}&p1=${data.p1}&p2=${data.p2}&p3=${data.p3}`;
 
-const baseURL =
-window.location.origin +
-window.location.pathname.replace("index.html","");
-
-const link =
-baseURL +
-"proposal.html?receiver="+receiver+
-"&nickname="+nickname+
-"&sender="+sender+
-"&p1="+p1+
-"&p2="+p2+
-"&p3="+p3;
-
-document.getElementById("result").innerHTML = `
-<p>Copy and send this link ❤️</p>
-<input value="${link}" id="copyBox" readonly style="width:85%;padding:10px">
+linkBox.innerHTML = `
+<p>Copy this link ❤️</p>
+<input value="${link}" id="copyLink" readonly style="width:80%">
 <br><br>
-<button onclick="copyLink()">Copy Link</button>
+<button onclick="copy()">Copy</button>
 `;
-
 }
 
-function copyLink(){
-const box = document.getElementById("copyBox");
-box.select();
+function copy(){
+copyLink.select();
 document.execCommand("copy");
 alert("Link copied!");
 }
-
 </script>
 
 </body>
