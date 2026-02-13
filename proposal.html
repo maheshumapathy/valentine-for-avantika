@@ -12,7 +12,7 @@ padding-top:40px;
 }
 
 img{
-width:200px;
+width:220px;
 margin:20px 0;
 }
 
@@ -42,19 +42,26 @@ font-weight:bold;
 <script>
 
 function getData(){
-const params=new URLSearchParams(window.location.search);
-return JSON.parse(decodeURIComponent(params.get("data")));
+const params=new URLSearchParams(location.search);
+const raw=params.get("data");
+
+if(raw){
+const decoded=JSON.parse(decodeURIComponent(raw));
+localStorage.setItem("valentineData",JSON.stringify(decoded));
+return decoded;
+}
+
+return JSON.parse(localStorage.getItem("valentineData"));
 }
 
 const data=getData();
 
-document.getElementById("receiverText").innerText =
-"Hey "+data.receiver;
+receiverText.innerText="Hey "+data.receiver;
 
 function yes(){
-window.location.href="gifts.html?data="+encodeURIComponent(JSON.stringify(data));
+location.href="gifts.html";
 }
-</script>
 
+</script>
 </body>
 </html>
