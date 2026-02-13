@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Valentine Proposal</title>
-
+<title>Valentine</title>
 <style>
 body{
 background:#ff3b3b;
-text-align:center;
-font-family:Arial;
 color:white;
-padding:40px;
+text-align:center;
+font-family:sans-serif;
+padding-top:50px;
 }
-
 img{
-width:220px;
+width:250px;
 margin:20px;
 }
-
 button{
-padding:12px 25px;
-margin:10px;
+padding:15px 30px;
 border:none;
-border-radius:8px;
+border-radius:20px;
+margin:10px;
+font-size:18px;
 cursor:pointer;
-font-weight:bold;
 }
 </style>
 </head>
@@ -35,22 +31,25 @@ font-weight:bold;
 
 <img src="gifs/teddy1.gif">
 
-<br>
+<h2>Will you be my Valentine?</h2>
 
-<button onclick="yes()">YES ❤️</button>
-<button onclick="alert('Think again 😜')">NO</button>
+<button onclick="yes()">Yes ❤️</button>
+<button onclick="no()">No 😭</button>
 
 <script>
+const params=new URLSearchParams(window.location.search);
+const data=params.get("data");
 
-const params = new URLSearchParams(location.search)
-const data = JSON.parse(decodeURIComponent(params.get("data")))
-
-title.innerText = `Hey ${data.receiver}, Will you be my Valentine?`
+let info=JSON.parse(decodeURIComponent(data));
+document.getElementById("title").innerText="Hey "+info.receiver+" ❤️";
 
 function yes(){
-location.href = `gifts.html?data=${params.get("data")}`
+window.location="gifts.html?data="+data;
 }
 
+function no(){
+alert("You can't escape 😜");
+}
 </script>
 
 </body>
