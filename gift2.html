@@ -1,53 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-    margin:0;
-    background:#ff2e2e;
-    text-align:center;
-    font-family:Arial;
-    color:white;
+background:red;
+text-align:center;
+font-family:Arial;
+padding:40px;
 }
-.song{
-    margin:30px auto;
+
+.player{
+background:#ff6b6b;
+margin:20px auto;
+padding:20px;
+width:80%;
+border-radius:15px;
 }
+
+audio{
+width:90%;
+}
+
 button{
-    padding:10px 20px;
-    margin:20px;
-    border:none;
-    border-radius:20px;
+margin:15px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 </style>
 </head>
+
 <body>
 
 <h2>Our Playlist 🎵</h2>
 
-<div class="song">
+<div class="player">
+<h3>Song 1</h3>
 <audio controls src="music/song1.mp3"></audio>
 </div>
 
-<div class="song">
+<div class="player">
+<h3>Song 2</h3>
 <audio controls src="music/song2.mp3"></audio>
 </div>
 
-<div class="song">
+<div class="player">
+<h3>Song 3</h3>
 <audio controls src="music/song3.mp3"></audio>
 </div>
 
-<button onclick="back()">Back To Letter</button>
+<button onclick="backLetter()">Back To Letter</button>
 <button onclick="restart()">Replay Everything</button>
 
 <script>
-function back(){window.location.href="./gift1.html";}
+function backLetter(){
+window.location.href="gift1.html"+window.location.search;
+}
+
 function restart(){
-    localStorage.clear();
-    window.location.href="./index.html";
+window.location.href="proposal.html"+window.location.search;
 }
 </script>
 
