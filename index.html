@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Valentine Proposal</title>
+<title>Create Proposal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-background:#ffc0cb;
-font-family: Arial;
+background:#ff3b3b;
+font-family:Arial;
 text-align:center;
-padding-top:120px;
+padding:40px;
+color:white;
+}
+
+input,textarea{
+width:80%;
+padding:12px;
+margin:10px;
+border-radius:8px;
+border:none;
 }
 
 button{
-padding:15px 40px;
-font-size:18px;
-margin:15px;
+padding:12px 25px;
+background:#fff;
 border:none;
-border-radius:25px;
+border-radius:8px;
 cursor:pointer;
+font-weight:bold;
 }
-
-.yes{background:#ff4d6d;color:white;}
 </style>
 </head>
 
 <body>
 
-<h1>Hey Avantika ❤️</h1>
-<h2>Will You Be My Valentine?</h2>
+<h1>Create Your Proposal ❤️</h1>
 
-<button class="yes" onclick="goNext()">Yes 💖</button>
+<input id="receiver" placeholder="Receiver Name">
+<input id="nickname" placeholder="Nickname">
+<input id="sender" placeholder="Your Name">
+
+<textarea id="p1" placeholder="Paragraph 1"></textarea>
+<textarea id="p2" placeholder="Paragraph 2"></textarea>
+<textarea id="p3" placeholder="Paragraph 3"></textarea>
+
+<br>
+<button onclick="generate()">Generate Link</button>
+
+<p id="link"></p>
 
 <script>
-function goNext(){
-window.location.href="proposal.html"+window.location.search;
+function generate(){
+
+const data = {
+receiver:receiver.value,
+nickname:nickname.value,
+sender:sender.value,
+p1:p1.value,
+p2:p2.value,
+p3:p3.value
+}
+
+const encoded = encodeURIComponent(JSON.stringify(data))
+
+const url = `proposal.html?data=${encoded}`
+
+link.innerHTML = `<a href="${url}" target="_blank">${url}</a>`
 }
 </script>
 
