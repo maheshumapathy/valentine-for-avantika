@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine Proposal</title>
+<title>Valentine</title>
 
 <style>
 body{
@@ -25,6 +25,7 @@ padding:20px;
 border-radius:15px;
 margin:20px auto;
 width:85%;
+white-space:pre-line;
 }
 
 button{
@@ -44,48 +45,31 @@ cursor:pointer;
 <img src="gifs/teddy1.gif">
 
 <div class="box">
-
-<p id="p1"></p>
-<p id="p2"></p>
-<p id="p3"></p>
-
-<br>
+<p id="para"></p>
 <p id="sign"></p>
-
 </div>
 
-<button onclick="alert('YES CLICKED ❤️')">Yes ❤️</button>
-<button onclick="alert('NO CLICKED 😭')">No 😭</button>
+<button onclick="alert('YES ❤️')">Yes</button>
+<button onclick="alert('NO 😭')">No</button>
 
 <script>
 
-function getData(){
+const params = new URLSearchParams(window.location.search);
 
-const params=new URLSearchParams(window.location.search);
-const encoded=params.get("data");
+const receiver = decodeURIComponent(params.get("receiver") || "");
+const sender = decodeURIComponent(params.get("sender") || "");
+const p1 = decodeURIComponent(params.get("p1") || "");
+const p2 = decodeURIComponent(params.get("p2") || "");
+const p3 = decodeURIComponent(params.get("p3") || "");
 
-if(!encoded) return {};
+document.getElementById("title").innerText =
+"Hey " + receiver + ", Will You Be My Valentine?";
 
-try{
-return JSON.parse(decodeURIComponent(escape(atob(encoded))));
-}
-catch{
-return {};
-}
+document.getElementById("para").innerText =
+p1 + "\n\n" + p2 + "\n\n" + p3;
 
-}
-
-const data=getData();
-
-document.getElementById("title").innerText=
-"Hey "+(data.receiver || "")+", Will You Be My Valentine?";
-
-document.getElementById("p1").innerText=data.p1 || "";
-document.getElementById("p2").innerText=data.p2 || "";
-document.getElementById("p3").innerText=data.p3 || "";
-
-document.getElementById("sign").innerText=
-"Forever Yours, "+(data.sender || "");
+document.getElementById("sign").innerText =
+"Forever Yours, " + sender;
 
 </script>
 
