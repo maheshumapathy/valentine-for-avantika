@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Playlist</title>
+<style>
+body{
+background:#ff3b3b;
+text-align:center;
+color:white;
+font-family:sans-serif;
+padding:40px;
+}
+audio{
+margin:20px;
+}
+button{
+padding:12px 25px;
+border:none;
+border-radius:20px;
+margin:10px;
+cursor:pointer;
+}
+</style>
+</head>
 
+<body>
+
+<h1>Our Playlist 🎵</h1>
+
+<audio controls src="music/song1.mp3"></audio><br>
+<audio controls src="music/song2.mp3"></audio><br>
+<audio controls src="music/song3.mp3"></audio><br>
+
+<button onclick="back()">Back To Letter</button>
+<button onclick="restart()">Replay Everything 🔄</button>
+
+<script>
+const params=new URLSearchParams(window.location.search);
+const data=params.get("data");
+
+function back(){
+window.location="gift1.html?data="+data;
+}
+
+function restart(){
+window.location="proposal.html?data="+data;
+}
+</script>
+
+</body>
+</html>
