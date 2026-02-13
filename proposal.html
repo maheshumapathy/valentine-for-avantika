@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valentine</title>
 
 <style>
@@ -45,7 +45,7 @@ cursor:pointer;
 <img src="gifs/teddy1.gif">
 
 <div class="box">
-<p id="para"></p>
+<p id="letter"></p>
 <p id="sign"></p>
 </div>
 
@@ -65,7 +65,7 @@ const p3 = decodeURIComponent(params.get("p3") || "");
 document.getElementById("title").innerText =
 "Hey " + receiver + ", Will You Be My Valentine?";
 
-document.getElementById("para").innerText =
+document.getElementById("letter").innerText =
 p1 + "\n\n" + p2 + "\n\n" + p3;
 
 document.getElementById("sign").innerText =
