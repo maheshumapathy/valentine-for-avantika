@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Create Valentine Link</title>
+<title>Valentine Proposal</title>
 
 <style>
 body{
-background:pink;
-font-family:sans-serif;
+font-family: Arial;
+background:#ff4d6d;
+color:white;
 text-align:center;
-padding:20px;
+padding:40px;
 }
 
 input, textarea{
-width:90%;
+width:80%;
+max-width:500px;
 padding:12px;
 margin:10px;
 border-radius:10px;
@@ -23,11 +23,11 @@ border:none;
 
 button{
 padding:12px 25px;
-background:red;
-color:white;
 border:none;
 border-radius:10px;
-font-size:16px;
+background:white;
+color:#ff4d6d;
+font-weight:bold;
 cursor:pointer;
 }
 </style>
@@ -35,11 +35,11 @@ cursor:pointer;
 
 <body>
 
-<h2>Create Your Valentine Link ❤️</h2>
+<h1>Create Your Proposal ❤️</h1>
 
-<input id="receiver" placeholder="Receiver Name">
-<input id="nick" placeholder="Nickname">
-<input id="sender" placeholder="Your Name">
+<input id="receiver" placeholder="Receiver Name"><br>
+<input id="nickname" placeholder="Nickname"><br>
+<input id="sender" placeholder="Your Name"><br>
 
 <textarea id="p1" placeholder="Paragraph 1"></textarea>
 <textarea id="p2" placeholder="Paragraph 2"></textarea>
@@ -47,22 +47,29 @@ cursor:pointer;
 
 <button onclick="generate()">Generate Link</button>
 
-<p id="output"></p>
+<p id="link"></p>
 
 <script>
+
 function generate(){
 
-let url="proposal.html?receiver="
-+encodeURIComponent(receiver.value)
-+"&nick="+encodeURIComponent(nick.value)
-+"&sender="+encodeURIComponent(sender.value)
-+"&p1="+encodeURIComponent(p1.value)
-+"&p2="+encodeURIComponent(p2.value)
-+"&p3="+encodeURIComponent(p3.value);
+const data={
+receiver:receiver.value,
+nickname:nickname.value,
+sender:sender.value,
+p1:p1.value,
+p2:p2.value,
+p3:p3.value
+};
 
-document.getElementById("output").innerHTML=
-"<a href='"+url+"' target='_blank'>Open Link</a>";
+const encoded = encodeURIComponent(JSON.stringify(data));
+
+const url = `proposal.html?data=${encoded}`;
+
+document.getElementById("link").innerHTML =
+`<a href="${url}" target="_blank">${location.origin}/${url}</a>`;
 }
+
 </script>
 
 </body>
