@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Valentine Gifts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valentine Proposal</title>
 
 <style>
 body{
-background:white;
+background:#ff3b3b;
 text-align:center;
 font-family:Arial;
-padding-top:120px;
+color:white;
+padding:40px;
+}
+
+img{
+width:220px;
+margin:20px;
 }
 
 button{
-padding:15px 35px;
-margin:15px;
-font-size:18px;
+padding:12px 25px;
+margin:10px;
 border:none;
-border-radius:20px;
-background:#ff4d6d;
-color:white;
+border-radius:8px;
 cursor:pointer;
+font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<h1>I Have Valentine Gifts For You 🎁</h1>
+<h1 id="title"></h1>
 
-<button onclick="gift1()">Gift 1 💌</button>
-<button onclick="gift2()">Gift 2 🎵</button>
+<img src="gifs/teddy1.gif">
+
+<br>
+
+<button onclick="yes()">YES ❤️</button>
+<button onclick="alert('Think again 😜')">NO</button>
 
 <script>
-function gift1(){
-window.location.href="gift1.html"+window.location.search;
+
+const params = new URLSearchParams(location.search)
+const data = JSON.parse(decodeURIComponent(params.get("data")))
+
+title.innerText = `Hey ${data.receiver}, Will you be my Valentine?`
+
+function yes(){
+location.href = `gifts.html?data=${params.get("data")}`
 }
 
-function gift2(){
-window.location.href="gift2.html"+window.location.search;
-}
 </script>
 
 </body>
