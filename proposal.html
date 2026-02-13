@@ -2,30 +2,18 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Valentine</title>
 
 <style>
 body{
-font-family:Arial;
-background:red;
+background:pink;
 text-align:center;
-color:white;
-padding:30px;
+font-family:Arial;
+padding:40px;
 }
 
 img{
 width:200px;
 margin:20px;
-}
-
-.box{
-background:white;
-color:black;
-padding:20px;
-border-radius:15px;
-margin:20px auto;
-width:85%;
-white-space:pre-line;
 }
 
 button{
@@ -44,33 +32,22 @@ cursor:pointer;
 
 <img src="gifs/teddy1.gif">
 
-<div class="box">
-<p id="letter"></p>
-<p id="sign"></p>
-</div>
+<h3>Will You Be My Valentine?</h3>
 
-<button onclick="alert('YES ❤️')">Yes</button>
-<button onclick="alert('NO 😭')">No</button>
+<button onclick="goYes()">Yes ❤️</button>
+<button onclick="alert('Oh no 😭')">No</button>
 
 <script>
+const query = window.location.search;
 
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(query);
+const name = decodeURIComponent(params.get("receiver") || "");
 
-const receiver = decodeURIComponent(params.get("receiver") || "");
-const sender = decodeURIComponent(params.get("sender") || "");
-const p1 = decodeURIComponent(params.get("p1") || "");
-const p2 = decodeURIComponent(params.get("p2") || "");
-const p3 = decodeURIComponent(params.get("p3") || "");
+title.innerText = "Hey "+name;
 
-document.getElementById("title").innerText =
-"Hey " + receiver + ", Will You Be My Valentine?";
-
-document.getElementById("letter").innerText =
-p1 + "\n\n" + p2 + "\n\n" + p3;
-
-document.getElementById("sign").innerText =
-"Forever Yours, " + sender;
-
+function goYes(){
+window.location.href="gifts.html"+query;
+}
 </script>
 
 </body>
